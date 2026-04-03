@@ -2755,6 +2755,10 @@
     if (name === 'blog' && !window._mcpOrbitalStarted) {
       window._mcpOrbitalStarted = true;
       initMCPOrbital();
+      if (name === 'blog' && !window._mcpOrbitalStarted) {
+  window._mcpOrbitalStarted = true;
+  initMCPOrbital();
+  console.log('MCP orbital init called, canvas:', document.getElementById('mcp-orbital'), 'W:', document.getElementById('mcp-orbital') ? document.getElementById('mcp-orbital').parentElement.offsetWidth : 'no canvas');
     }
 
     var navLink = document.getElementById('nav-' + name);
