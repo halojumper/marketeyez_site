@@ -2129,42 +2129,42 @@
     <canvas id="mcp-orbital" style="width:100%; height:100%; display:block;"></canvas>
   </div>
   <script>
-  (function(){
-    const canvas = document.getElementById('mcp-orbital');
-    const ctx = canvas.getContext('2d');
-    const container = canvas.parentElement;
-    let W,H,cx,cy,dpr;
+    function initMCPOrbital() {
+    var canvas = document.getElementById('mcp-orbital');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var container = canvas.parentElement;
+    var W,H,cx,cy,dpr;
     function resize(){
       dpr=window.devicePixelRatio||1;
       W=container.offsetWidth; H=container.offsetHeight;
       canvas.width=W*dpr; canvas.height=H*dpr;
       ctx.scale(dpr,dpr); cx=W/2; cy=H/2;
     }
-    const COPPER='#b87333',COPPER_MID='#8a5520',COPPER_DIM='#3d2810',
-          COAL_MID='#242424',COAL_LIGHT='#221c14',
-          CREAM='#f0ede8',GOLD='#e8c97a',MCP_COLOR='#d4915a';
-    const nodes=[
+    var COPPER='#b87333',COPPER_MID='#8a5520',COPPER_DIM='#3d2810',
+        COAL_MID='#242424',COAL_LIGHT='#221c14',
+        CREAM='#f0ede8',GOLD='#e8c97a',MCP_COLOR='#d4915a';
+    var nodes=[
       {label:'SalesTech',sub:'CRM · Engagement · CPQ',      angle:-Math.PI/2},
       {label:'MarTech',  sub:'Automation · Email · AdTech', angle:-Math.PI/2+(Math.PI*2/5)},
       {label:'Service',  sub:'Support · AI Chat · Success', angle:-Math.PI/2+(Math.PI*4/5)},
       {label:'Data',     sub:'Warehouse · ETL · CDP',       angle:-Math.PI/2+(Math.PI*6/5)},
       {label:'Analytics',sub:'BI · Forecasting · Reporting',angle:-Math.PI/2+(Math.PI*8/5)},
     ];
-    const SPEED=0.00022;
-    let offset=0,last=null;
-    const dotPhases=nodes.map((_,i)=>i*(Math.PI*2/nodes.length));
+    var SPEED=0.00022,offset=0,last=null;
+    var dotPhases=nodes.map(function(_,i){return i*(Math.PI*2/nodes.length);});
     function drawGrid(){
       ctx.save(); ctx.strokeStyle='#1e1e1e'; ctx.lineWidth=0.5;
-      const step=Math.min(W,H)/9;
-      for(let x=0;x<W;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
-      for(let y=0;y<H;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+      var step=Math.min(W,H)/9;
+      for(var x=0;x<W;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+      for(var y=0;y<H;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
       ctx.restore();
     }
     function drawCorners(){
       ctx.save(); ctx.strokeStyle=COPPER; ctx.lineWidth=1; ctx.globalAlpha=0.4;
-      [[24,24,1,1],[W-24,24,-1,1],[24,H-24,1,-1],[W-24,H-24,-1,-1]].forEach(([px,py,sx,sy])=>{
-        ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px+sx*10,py);
-        ctx.moveTo(px,py); ctx.lineTo(px,py+sy*10); ctx.stroke();
+      [[24,24,1,1],[W-24,24,-1,1],[24,H-24,1,-1],[W-24,H-24,-1,-1]].forEach(function(p){
+        ctx.beginPath(); ctx.moveTo(p[0],p[1]); ctx.lineTo(p[0]+p[2]*10,p[1]);
+        ctx.moveTo(p[0],p[1]); ctx.lineTo(p[0],p[1]+p[3]*10); ctx.stroke();
       }); ctx.restore();
     }
     function drawOrbitRing(r){
@@ -2178,21 +2178,21 @@
       ctx.strokeStyle=COPPER; ctx.lineWidth=3; ctx.globalAlpha=0.05; ctx.stroke();
       ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(nx,ny);
       ctx.strokeStyle=COPPER_MID; ctx.lineWidth=0.8; ctx.globalAlpha=0.75; ctx.stroke();
-      const t=(Math.sin(ts*0.0018+phase)*0.5+0.5);
-      const dx=cx+(nx-cx)*t, dy=cy+(ny-cy)*t;
+      var t=(Math.sin(ts*0.0018+phase)*0.5+0.5);
+      var dx=cx+(nx-cx)*t, dy=cy+(ny-cy)*t;
       ctx.beginPath(); ctx.arc(dx,dy,2.5,0,Math.PI*2);
       ctx.fillStyle=GOLD; ctx.globalAlpha=0.7; ctx.fill();
       ctx.restore();
     }
     function drawCenterNode(ts){
-      const pulseT=Math.sin(ts*0.0014)*0.5+0.5;
-      [1,2,3].forEach(i=>{
-        const pr=Math.min(W,H)*0.12+i*14+pulseT*7;
+      var pulseT=Math.sin(ts*0.0014)*0.5+0.5;
+      var cr=Math.min(W,H)*0.11;
+      [1,2,3].forEach(function(i){
+        var pr=cr*1.1+i*14+pulseT*7;
         ctx.beginPath(); ctx.arc(cx,cy,pr,0,Math.PI*2);
         ctx.strokeStyle=COPPER; ctx.globalAlpha=(0.09-i*0.025)*(1-pulseT*0.3);
         ctx.lineWidth=1; ctx.stroke();
       });
-      const cr=Math.min(W,H)*0.11;
       ctx.beginPath(); ctx.arc(cx,cy,cr,0,Math.PI*2);
       ctx.fillStyle=COAL_MID; ctx.globalAlpha=1; ctx.fill();
       ctx.strokeStyle=COPPER; ctx.lineWidth=1.5; ctx.stroke();
@@ -2206,27 +2206,26 @@
       ctx.beginPath(); ctx.moveTo(cx-cr*0.45,cy); ctx.lineTo(cx+cr*0.45,cy); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(cx,cy-cr*0.45); ctx.lineTo(cx,cy+cr*0.45); ctx.stroke();
       ctx.restore();
-      [0,Math.PI*.5,Math.PI,Math.PI*1.5].forEach(a=>{
-        const x1=cx+Math.cos(a)*(cr*0.96), y1=cy+Math.sin(a)*(cr*0.96);
-        const x2=cx+Math.cos(a)*(cr*1.1),  y2=cy+Math.sin(a)*(cr*1.1);
+      [0,Math.PI*.5,Math.PI,Math.PI*1.5].forEach(function(a){
+        var x1=cx+Math.cos(a)*(cr*0.96), y1=cy+Math.sin(a)*(cr*0.96);
+        var x2=cx+Math.cos(a)*(cr*1.1),  y2=cy+Math.sin(a)*(cr*1.1);
         ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
         ctx.strokeStyle=COPPER; ctx.lineWidth=1.5; ctx.globalAlpha=0.8; ctx.stroke();
       });
       ctx.beginPath(); ctx.arc(cx,cy+cr*0.08,cr*0.09,0,Math.PI*2);
       ctx.fillStyle=COPPER; ctx.globalAlpha=1; ctx.fill();
-      ctx.beginPath(); ctx.arc(cx-cr*0.015,cy+cr*0.065,cr*0.027,0,Math.PI*2);
-      ctx.fillStyle=GOLD; ctx.globalAlpha=0.6; ctx.fill();
       ctx.globalAlpha=1;
-      ctx.fillStyle='#110a04'; ctx.font=`800 ${Math.max(11,cr*0.32)}px Barlow,sans-serif`;
+      ctx.fillStyle='#110a04';
+      ctx.font='800 '+Math.max(11,Math.floor(cr*0.32))+'px Barlow,sans-serif';
       ctx.textAlign='center'; ctx.fillText('MCP',cx+0.75,cy-cr*0.18+0.75);
       ctx.fillStyle=MCP_COLOR; ctx.fillText('MCP',cx,cy-cr*0.18);
       ctx.globalAlpha=0.9; ctx.fillStyle=COPPER;
-      ctx.font=`500 ${Math.max(8,cr*0.18)}px Barlow,sans-serif`;
+      ctx.font='500 '+Math.max(8,Math.floor(cr*0.18))+'px Barlow,sans-serif';
       ctx.fillText('Protocol Hub',cx,cy+cr*0.38);
     }
     function drawSatelliteNode(x,y,label,sub,scale){
-      const r=Math.max(24,30*scale);
-      const fs=Math.max(8,10*scale), ss=Math.max(6,7*scale);
+      var r=Math.max(24,30*scale);
+      var fs=Math.max(8,Math.floor(10*scale)), ss=Math.max(6,Math.floor(7*scale));
       ctx.beginPath(); ctx.arc(x,y,r+10,0,Math.PI*2);
       ctx.fillStyle='#1a1a1a'; ctx.globalAlpha=0.72; ctx.fill();
       ctx.beginPath(); ctx.arc(x,y,r+5,0,Math.PI*2);
@@ -2238,39 +2237,41 @@
       ctx.strokeStyle=COPPER_MID; ctx.lineWidth=0.4;
       ctx.setLineDash([2,5]); ctx.stroke(); ctx.setLineDash([]);
       ctx.globalAlpha=1;
-      ctx.fillStyle='#110a04'; ctx.font=`700 ${fs}px Barlow,sans-serif`;
+      ctx.fillStyle='#110a04';
+      ctx.font='700 '+fs+'px Barlow,sans-serif';
       ctx.textAlign='center'; ctx.fillText(label,x+0.5,y-6+0.5);
       ctx.fillStyle=CREAM; ctx.fillText(label,x,y-6);
       ctx.beginPath(); ctx.arc(x,y+2,3.5,0,Math.PI*2);
       ctx.fillStyle=COPPER; ctx.globalAlpha=1; ctx.fill();
       ctx.globalAlpha=0.85; ctx.fillStyle=COPPER;
-      ctx.font=`500 ${ss}px Barlow,sans-serif`;
+      ctx.font='500 '+ss+'px Barlow,sans-serif';
       ctx.fillText(sub,x,y+14);
       ctx.globalAlpha=1;
     }
     function frame(ts){
       if(!last) last=ts;
-      const dt=ts-last; last=ts;
+      var dt=ts-last; last=ts;
       offset+=SPEED*dt;
       ctx.clearRect(0,0,W,H);
       ctx.fillStyle='#1a1a1a'; ctx.fillRect(0,0,W,H);
       drawGrid();
-      const minDim=Math.min(W,H), scale=minDim/480, orbitR=minDim*0.415;
+      var minDim=Math.min(W,H), scale=minDim/480, orbitR=minDim*0.415;
       drawOrbitRing(orbitR);
-      const positions=nodes.map((n,i)=>({
+      var positions=nodes.map(function(n,i){return{
         x:cx+Math.cos(n.angle+offset)*orbitR,
         y:cy+Math.sin(n.angle+offset)*orbitR,
         label:n.label, sub:n.sub, phase:dotPhases[i]
-      }));
-      positions.forEach(n=>drawConnector(n.x,n.y,n.phase,ts));
-      positions.forEach(n=>drawSatelliteNode(n.x,n.y,n.label,n.sub,scale));
+      };});
+      positions.forEach(function(n){drawConnector(n.x,n.y,n.phase,ts);});
+      positions.forEach(function(n){drawSatelliteNode(n.x,n.y,n.label,n.sub,scale);});
       drawCenterNode(ts);
       drawCorners();
       requestAnimationFrame(frame);
     }
     resize();
-    window.addEventListener('resize',resize);
+    window.addEventListener('resize', resize);
     requestAnimationFrame(frame);
+  }
   })();
   </script>
     </div>
