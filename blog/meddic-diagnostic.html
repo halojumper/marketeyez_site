@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEDDIC Is Not a Checklist — It's a Diagnostic | Marketeyez</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --charcoal: #1a1a1a;
+      --charcoal-mid: #242424;
+      --charcoal-light: #2e2e2e;
+      --copper: #b87333;
+      --copper-light: #d4915a;
+      --copper-pale: #e8c49a;
+      --text-primary: #f0ede8;
+      --text-secondary: #a09890;
+      --text-muted: #6b6460;
+      --rule: rgba(184,115,51,0.25);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--charcoal);
+      color: var(--text-primary);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--copper);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--copper-light); }
+
+    .hero {
+      max-width: 820px;
+      margin: 6rem auto 0;
+      padding: 0 2rem;
+    }
+    .category-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      border: 1px solid var(--copper);
+      padding: 0.35rem 0.85rem;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1.75rem;
+    }
+    .hero-dek {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--copper-pale);
+      line-height: 1.65;
+      border-left: 3px solid var(--copper);
+      padding-left: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3.5rem;
+    }
+    .byline-name { color: var(--text-secondary); font-weight: 500; }
+    .byline-dot { color: var(--rule); }
+
+    .post-body {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+    .post-body p {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-bottom: 1.75rem;
+      font-weight: 300;
+    }
+    .post-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 3.5rem 0 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin: 2.5rem 0 0.75rem;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--copper);
+      margin: 3rem 0;
+      padding: 1.5rem 2rem;
+      background: var(--charcoal-mid);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--copper-pale);
+      line-height: 1.55;
+      margin-bottom: 0 !important;
+    }
+
+    .callout {
+      background: var(--charcoal-light);
+      border: 1px solid var(--rule);
+      border-top: 2px solid var(--copper);
+      padding: 1.75rem 2rem;
+      margin: 2.5rem 0;
+    }
+    .callout-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 0.75rem;
+    }
+    .callout p {
+      font-size: 0.95rem !important;
+      color: var(--text-secondary) !important;
+      margin-bottom: 0 !important;
+    }
+    .callout ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    .callout ul li {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(184,115,51,0.1);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .callout ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--copper);
+      font-size: 0.8rem;
+    }
+    .callout ul li:last-child { border-bottom: none; }
+
+    .meddic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+    .meddic-card {
+      background: var(--charcoal-light);
+      border: 1px solid var(--rule);
+      border-top: 2px solid var(--copper);
+      padding: 1.25rem 1.5rem;
+    }
+    .meddic-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--copper);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .meddic-word {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+    .meddic-question {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .post-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2.5rem 0;
+      font-size: 0.9rem;
+    }
+    .post-table th {
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--copper);
+    }
+    .post-table td {
+      padding: 0.9rem 1rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(184,115,51,0.12);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .post-table tr:last-child td { border-bottom: none; }
+    .post-table td:first-child { color: var(--text-primary); font-weight: 500; }
+
+    .post-cta {
+      max-width: 820px;
+      margin: 0 auto 6rem;
+      padding: 3rem 2rem;
+      background: var(--charcoal-mid);
+      border: 1px solid var(--rule);
+      border-top: 2px solid var(--copper);
+      text-align: center;
+    }
+    .post-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .post-cta p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      border: 1px solid var(--copper);
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cta-btn:hover { background: var(--copper); color: var(--charcoal); }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="https://www.marketeyez.com/">Marketeyez</a>
+    <div class="nav-links">
+      <a href="https://www.marketeyez.com/">Home</a>
+      <a href="https://www.marketeyez.com/#services">Services</a>
+      <a href="https://www.marketeyez.com/#blog">Insights</a>
+      <a href="https://www.marketeyez.com/#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="category-tag">Pre-Sales</span>
+    <h1>MEDDIC Is Not a Checklist — It's a Diagnostic</h1>
+    <p class="hero-dek">The difference between reps who fill in the fields and consultants who actually diagnose the deal. After many years working enterprise B2B sales cycles, here is what I have learned about why most MEDDIC implementations fail — and what the good ones look like.</p>
+    <div class="byline">
+      <span class="byline-name">Jake (Jakub) Malobecki</span>
+      <span class="byline-dot">·</span>
+      <span>February 2026</span>
+      <span class="byline-dot">·</span>
+      <span>10 min read</span>
+    </div>
+  </section>
+
+  <article class="post-body">
+
+    <p>I have sat in more deal reviews than I can count. And there is a scene that plays out with remarkable consistency, across companies, across verticals, across deal sizes. A rep pulls up their CRM record. The MEDDIC fields are populated. Metrics: checked. Economic buyer: checked. Decision criteria: checked. The manager nods. The deal stays in the forecast. And then it slips. Or stalls. Or quietly disappears into a sea of "no decision."</p>
+
+    <p>The fields were filled. The deal was not qualified.</p>
+
+    <p>This is the central failure mode of MEDDIC in practice — and it is not the framework's fault. MEDDIC, applied correctly, is one of the most powerful diagnostic tools in enterprise sales. The problem is that somewhere between the training room and the field, it gets flattened into a form. A compliance exercise. A box to check before the forecast call so nobody asks hard questions.</p>
+
+    <p>I want to talk about what it actually looks like when MEDDIC is used as a diagnostic — and why that distinction changes everything.</p>
+
+    <h2>Where the checklist mentality comes from</h2>
+
+    <p>It is worth being honest about why this happens. MEDDIC is taught in cohorts. It gets introduced in onboarding, often alongside a dozen other frameworks, and the message that lands is: fill in these six fields and your deal is qualified. Sales managers reinforce it by inspecting the fields in CRM rather than the quality of thinking behind them. Over time, reps learn that a populated MEDDIC record makes the forecast conversation easier — not that it makes the deal more likely to close.</p>
+
+    <p>There is also a deeper issue. MEDDIC asks hard questions. Real answers to those questions are sometimes uncomfortable. If you genuinely do not know who the economic buyer is six weeks into a deal, writing "TBD" in a CRM field is an admission of vulnerability. It is much easier to write the name of the most senior person you have met — even if that person has never signed a deal of this size, even if they have explicitly told you procurement makes the final call.</p>
+
+    <p>Intellectual honesty is a prerequisite for MEDDIC to work. And intellectual honesty is uncomfortable in a culture that rewards optimism in the pipeline.</p>
+
+    <div class="pull-quote">
+      <p>"The fields were filled. The deal was not qualified. This is the central failure mode of MEDDIC in practice."</p>
+    </div>
+
+    <h2>What the letters actually mean — and what they are really asking</h2>
+
+    <p>Let me walk through the framework the way I actually use it in a deal — not as a definition exercise, but as a set of live diagnostic questions that I am constantly re-evaluating.</p>
+
+    <div class="meddic-grid">
+      <div class="meddic-card">
+        <div class="meddic-letter">M</div>
+        <div class="meddic-word">Metrics</div>
+        <div class="meddic-question">"What is the quantified cost of the problem, and who owns that number?"</div>
+      </div>
+      <div class="meddic-card">
+        <div class="meddic-letter">E</div>
+        <div class="meddic-word">Economic Buyer</div>
+        <div class="meddic-question">"Who can say yes when everyone else says no — and have I spoken to them directly?"</div>
+      </div>
+      <div class="meddic-card">
+        <div class="meddic-letter">D</div>
+        <div class="meddic-word">Decision Criteria</div>
+        <div class="meddic-question">"What does winning look like to them — and did they tell me, or did I assume?"</div>
+      </div>
+      <div class="meddic-card">
+        <div class="meddic-letter">D</div>
+        <div class="meddic-word">Decision Process</div>
+        <div class="meddic-question">"What are the actual steps between here and a signed order — including the ones they haven't told me about yet?"</div>
+      </div>
+      <div class="meddic-card">
+        <div class="meddic-letter">I</div>
+        <div class="meddic-word">Identify Pain</div>
+        <div class="meddic-question">"Is the pain real, is it felt by the economic buyer, and is it urgent enough to act on this quarter?"</div>
+      </div>
+      <div class="meddic-card">
+        <div class="meddic-letter">C</div>
+        <div class="meddic-word">Champion</div>
+        <div class="meddic-question">"Who inside this account will fight for us when we are not in the room — and what have they actually done to prove it?"</div>
+      </div>
+    </div>
+
+    <p>Notice that none of those are questions you answer once and file away. They are living questions. The economic buyer you identified in week two may not be the economic buyer in week eight — especially in enterprise deals where budget authority shifts, reorganizations happen, and procurement gets involved at the last moment. The decision criteria a VP of Sales shares with you in a discovery call may be completely different from the criteria the CFO applies when the contract lands on their desk.</p>
+
+    <p>MEDDIC as a diagnostic means you are asking these questions continuously, updating your picture of the deal as new information surfaces, and being honest — with yourself, your manager, and your champion — when the picture is incomplete.</p>
+
+    <h2>The Champion question is the one that exposes everything</h2>
+
+    <p>If I had to pick the single MEDDIC element that most reliably separates well-qualified deals from wishful thinking, it is Champion. Not because the other elements matter less — they do not — but because a real champion is the mechanism through which everything else gets resolved.</p>
+
+    <p>A champion who is genuinely invested in your success will tell you who the real economic buyer is. They will share the internal decision criteria that were never written down in the RFP. They will warn you when a competitor has gotten to a stakeholder you have not met. They will coach you on what to say — and what not to say — before an executive presentation.</p>
+
+    <p>A false champion will do none of those things. They will smile in your meetings, tell you the deal is going well, and quietly fail to advocate for you when it counts. They may genuinely like you as a person. They may even want your product to win. But wanting and fighting are different things, and only one of them moves deals.</p>
+
+    <p>The test I apply — learned from years of hard-won deal experience — is simple: what has this person actually done to advance the deal? Not what have they said. What have they done. Have they introduced me to the economic buyer? Have they shared internal documents, org charts, or budget information that was not supposed to leave the building? Have they pushed back on my proposal in a way that suggested they were pressure-testing it for internal consumption? Those are champion behaviors. Attendance at demos and friendly email responses are not.</p>
+
+    <div class="pull-quote">
+      <p>"Wanting and fighting are different things. And only one of them moves deals."</p>
+    </div>
+
+    <h2>Metrics: the element most commonly faked</h2>
+
+    <p>Metrics is where I see the most creative writing in CRM records. "Improved efficiency." "Reduced manual effort." "Better data quality." These are not metrics. They are directions. A metric has a number, a baseline, a time horizon, and an owner.</p>
+
+    <p>At Dun & Bradstreet, I worked deals where the stated pain was "our data is bad." That is a feeling, not a metric. The diagnostic work was converting that feeling into something quantifiable — and that conversion almost always required getting to someone closer to the money than the person who first expressed the pain. A data operations manager knows the data is bad. A CFO knows what bad data costs: duplicate records that inflate marketing spend, leads routed to the wrong territories, deals closed with incorrect company hierarchies that create downstream revenue recognition problems. Those are metrics. Those are the conversations that build business cases that survive procurement scrutiny.</p>
+
+    <p>If you cannot state the metric in a sentence that a CFO would recognize as a business problem, you do not have a metric yet. You have a starting point for discovery.</p>
+
+    <h2>MEDDIC and MEDDPICC: when to use the extended framework</h2>
+
+    <p>MEDDPICC adds Paper Process and Competition to the original six elements. In my experience, these are not always necessary — but they are essential in specific deal types.</p>
+
+    <table class="post-table">
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>When it becomes critical</th>
+          <th>What to watch for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Paper Process</td>
+          <td>Enterprise deals with legal, security, or procurement gates</td>
+          <td>Legal redlines that take 6 weeks. Security reviews that require custom questionnaires. Procurement cycles that reset the clock. If you have not mapped this, your close date is fiction.</td>
+        </tr>
+        <tr>
+          <td>Competition</td>
+          <td>Any deal where the prospect is evaluating alternatives — which is most deals</td>
+          <td>Not just who else is in the deal, but where you stand relative to their decision criteria. A competitor who scores higher on three of four criteria is a different threat than one who scores lower across the board but has an existing relationship with the economic buyer.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>I default to the full MEDDPICC model for any deal above a certain threshold — not because smaller deals do not deserve rigor, but because the paper process and competitive elements tend to have less deal-threatening complexity at lower contract values. In an enterprise deal with a six-figure ACV and a legal review cycle, ignoring paper process is how you get a deal that is "closed" in your forecast for three months while the contract sits in a legal queue.</p>
+
+    <h2>How I actually run a MEDDIC-informed discovery conversation</h2>
+
+    <p>The mistake I see most often from earlier-career solutions consultants is treating MEDDIC as an interrogation script. They go into discovery with a mental checklist and try to get answers to all six questions in a single call. The prospect feels interviewed. The conversation loses its natural flow. And the answers they get are surface-level because they asked surface-level questions on a timeline.</p>
+
+    <p>Discovery informed by MEDDIC is more like a series of conversations that progressively build a complete picture. In an early call, I am primarily focused on pain and metrics — understanding what is broken, what it costs, and whether there is genuine urgency. Champion and economic buyer emerge from those conversations as I learn the organizational dynamics: who cares about this problem, who owns the budget, who has tried to fix it before and why it did not work.</p>
+
+    <p>Decision criteria and decision process often do not become fully visible until I have earned enough trust for a champion to share them honestly. They are not things you extract — they are things you earn access to by demonstrating that you understand the business and are not going to waste anyone's time.</p>
+
+    <div class="callout">
+      <div class="callout-label">A diagnostic question I use in almost every enterprise deal</div>
+      <p>"Help me understand — if we get to the end of this evaluation and everyone agrees this is the right solution, what would need to be true for this not to happen?" It is a disarming question. And the answer almost always tells you something you did not know about the paper process, a stakeholder you have not met, a budget situation that has not been disclosed, or a competing initiative that is consuming organizational attention. That is MEDDIC as a diagnostic.</p>
+    </div>
+
+    <h2>What great MEDDIC practice looks like in a deal review</h2>
+
+    <p>The best deal reviews I have been part of — and the best ones I have run — sound less like status updates and more like clinical consultations. The question is not "where is this deal?" It is "what do we know, what do we not know, and what are we doing to close the gaps?"</p>
+
+    <p>A rep who says "I have met with the VP of Sales three times and the deal is progressing well" has given me nothing diagnostically useful. A rep who says "I have met with the VP of Sales three times, she has confirmed the business case and introduced me to the CFO, but I have not yet been able to map the full procurement process and I am scheduling a call with their legal team next week to understand the contract review timeline" — that rep is running a real qualification.</p>
+
+    <p>The difference is not experience. It is the habit of asking diagnostic questions rather than confirmatory ones. Confirmatory questions — "Does this solve your problem?" "Are we still on track for Q2?" — tell you what the prospect wants you to hear. Diagnostic questions — "What would cause this not to happen?" "Who else needs to be comfortable with this decision before it moves forward?" — tell you what is actually going on.</p>
+
+    <h2>The honest truth about MEDDIC and no-decision outcomes</h2>
+
+    <p>Here is something that often gets left out of MEDDIC training: a well-qualified deal can still end in no decision. MEDDIC does not guarantee a win. What it does is guarantee that you are not surprised by the outcome — and that you are not investing resources in opportunities that were never real.</p>
+
+    <p>Some of the most valuable MEDDIC moments I have experienced were disqualification moments. Conversations where it became clear that the economic buyer was not engaged, the pain was not urgent enough to justify the investment, or the champion did not have the organizational credibility to drive the deal through. Walking away from those deals — or dramatically deprioritizing them in the forecast — freed up time and energy for opportunities that were actually winnable.</p>
+
+    <p>In enterprise pre-sales, time is the scarcest resource. MEDDIC, used honestly, is a tool for allocating that resource intelligently. Not just for winning deals — for choosing which deals deserve to be won.</p>
+
+    <div class="callout">
+      <div class="callout-label">Key Takeaways</div>
+      <ul>
+        <li>MEDDIC is a diagnostic framework, not a data entry exercise. Filled fields and qualified deals are not the same thing.</li>
+        <li>Champion is the most revealing element — what your champion has done to advance the deal matters far more than what they have said.</li>
+        <li>Metrics require a number, a baseline, a time horizon, and an owner. Directions are not metrics.</li>
+        <li>Use MEDDPICC for enterprise deals where paper process and competition have deal-threatening complexity.</li>
+        <li>The best diagnostic question in any deal: "What would need to be true for this not to happen?"</li>
+        <li>A well-run MEDDIC process that ends in disqualification is a success — it returned time and resources to deals that can actually be won.</li>
+      </ul>
+    </div>
+
+  </article>
+
+  <section class="post-cta">
+    <h3>Want to sharpen your pre-sales motion?</h3>
+    <p>Marketeyez works with solutions consulting teams and GTM leaders to build discovery frameworks, deal qualification rigor, and demo strategies that actually move enterprise pipeline.</p>
+    <a class="cta-btn" href="https://www.marketeyez.com/#contact">Get in Touch</a>
+  </section>
+
+  <footer>
+    &copy; 2026 Marketeyez &nbsp;·&nbsp; All rights reserved
+  </footer>
+
+</body>
+</html>
