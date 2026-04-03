@@ -1155,23 +1155,14 @@
 
   .blog-featured:hover { border-color: var(--copper); }
 
-  .blog-featured-image {
-    width: 100%;
-    height: 300px;
-    background: linear-gradient(135deg, var(--dark2) 0%, rgba(184,122,75,0.15) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    color: var(--copper);
-    opacity: 0.4;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .blog-featured-content {
-    padding: 2.5rem;
-  }
+  <div class="blog-featured-image" style="padding: 0; opacity: 1;">
+  <iframe
+    src="blog/mcp-orbital-hero.html"
+    style="width:100%; height:100%; border:none; display:block;"
+    title="MCP RevOps Orbital"
+    loading="lazy"
+  ></iframe>
+</div>
 
   .blog-meta {
     display: flex;
