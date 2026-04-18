@@ -1391,7 +1391,44 @@
     flex-direction: column;
     justify-content: center;
   }
+.calendly-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 18px;
+  background: transparent;
+  border: 1px solid var(--copper);
+  color: var(--copper-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 1rem;
+}
 
+.contact-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
   .contact-form-label {
     font-size: 0.65rem;
     letter-spacing: 0.3em;
@@ -2309,6 +2346,12 @@
     <div class="contact-right">
       <span class="contact-form-label">Send a message</span>
       <div class="copper-line"></div>
+      <a href="https://calendly.com/jmalobecki-marketeyez" target="_blank" rel="noopener noreferrer" class="calendly-btn">
+  Book a Meeting
+</a>
+<div class="contact-divider">
+  <span>or send a message below</span>
+</div>
       <form id="contact-form" onsubmit="sendEmail(event)">
         <div class="form-row">
           <div class="form-group">
