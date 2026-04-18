@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jakub Malobecki | Solutions Consultant & AI MarTech Strategist | Marketeyez</title>
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta name="description" content="Jakub Malobecki is a Solutions Consultant & AI MarTech Strategist, and web designer based in the Boston Metro area. Founder of Marketeyez — helping enterprise revenue teams align AI-powered go-to-market technology with real business outcomes, and building professional websites for small businesses and entrepreneurs.">
 <meta name="keywords" content="Solutions Consultant, Sales Engineer, Pre-Sales Consultant, AI MarTech Strategist, MarTech Consulting, SalesTech Consulting, Agentic AI, Model Context Protocol, MCP, MEDDIC, Revenue Tech Stack, Go-to-Market Strategy, Enterprise B2B SaaS, Jakub Malobecki, Marketeyez, Boston, AdTech, digital advertising, programmatic advertising, SSP, DSP, supply-side platform, demand-side platform, social media advertising, search advertising, small business website design, website for small business, affordable website design Boston, freelancer website, entrepreneur website, website designer Massachusetts, small business web presence">
 <meta name="author" content="Jakub Malobecki">
@@ -1155,7 +1162,7 @@
 
   .blog-featured:hover { border-color: var(--copper); }
 
-  .blog-featured-image {
+ .blog-featured-image {
     width: 100%;
     height: 300px;
     background: linear-gradient(135deg, var(--dark2) 0%, rgba(184,122,75,0.15) 100%);
@@ -1165,12 +1172,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 4rem;
     color: var(--copper);
-    opacity: 0.4;
     border-bottom: 1px solid var(--border-light);
-  }
-
-  .blog-featured-content {
-    padding: 2.5rem;
   }
 
   .blog-meta {
@@ -1273,7 +1275,24 @@
     color: var(--text-muted);
     line-height: 1.7;
   }
+.blog-read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--copper);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,122,75,0.4);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
 
+  .blog-read-more:hover {
+    color: var(--copper-light);
+    border-color: var(--copper-light);
+  }
   /* ─── CONTACT PAGE ─── */
   #page-contact { padding-top: 72px; }
 
@@ -1511,53 +1530,6 @@
     margin: 1.5rem 0;
   }
 
-  /* ─── CALENDLY BUTTON ─── */
-  .calendly-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 18px;
-    background: transparent;
-    border: 1px solid var(--copper);
-    color: var(--copper-light);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-bottom: 1rem;
-  }
-
-  .calendly-btn:hover {
-    background: var(--copper);
-    color: var(--black);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(184,122,75,0.25);
-  }
-
-  .contact-divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0 1.5rem;
-    color: var(--text-muted);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .contact-divider::before,
-  .contact-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border-light);
-  }
-
   /* ─── CONTACT FORM STATUS ─── */
   .cf-status {
     padding: 1rem 1.2rem;
@@ -1644,7 +1616,7 @@
   <section class="hero">
     <div class="hero-left">
       <div class="hero-brand-lockup fade-up delay-1">
-        <img src="logo.png" alt="Marketeyez" class="hero-logo-large">
+        <img src="logo.png" alt="Marketeyez" class="hero-logo-large" loading="lazy">
         <div class="hero-brand-text">
           <span class="hero-brand-name">Marketeyez</span>
           <span class="hero-brand-tag">Open Their Eyes</span>
@@ -1659,17 +1631,28 @@
       </p>
       <div class="hero-actions fade-up delay-5">
         <a class="btn-primary" onclick="showPage('services')">Explore Services</a>
-        <a class="btn-secondary" onclick="showPage('contact')">Start a Conversation</a>
+        <a class="btn-secondary" href="https://calendly.com/jmalobecki-marketeyez" target="_blank" rel="noopener">Schedule a Call</a>
       </div>
     </div>
     <div class="hero-right">
       <div class="hero-photo-wrap">
-        <img src="headshot.png" alt="Jakub Malobecki" class="hero-photo">
+        <img src="headshot.png" alt="Jakub Malobecki" class="hero-photo" loading="lazy">
 
       </div>
     </div>
   </section>
-
+  <div style="padding: 3rem 5rem; background: var(--dark2); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <p style="font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--copper); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px;">
+    <span style="width: 30px; height: 1px; background: var(--copper); display: inline-block;"></span>
+    What I Do
+  </p>
+  <div style="max-width: 760px; margin: 0 auto; border-radius: 8px; overflow: hidden; position: relative; z-index: 1001;">
+    <video controls preload="metadata" poster="video-poster.jpg"
+      style="width: 100%; display: block; outline: none; position: relative; z-index: 1001;">
+      <source src="Marketeyez_intro.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
   <div class="stats-bar">
     <div class="stat-item">
       <div class="stat-num">15+</div>
@@ -1807,7 +1790,7 @@
   <section class="about-bio">
     <div class="about-photo-col">
       <div class="about-photo-frame">
-        <img src="headshot.png" alt="Jakub Malobecki" class="about-photo">
+        <img src="headshot.png" alt="Jakub Malobecki" class="about-photo" loading="lazy">
       </div>
       <div class="about-quote">
         <p>"My edge is seeing what enterprise teams overlook — then building the case to act on it."</p>
@@ -1940,7 +1923,17 @@
     <h1 class="page-hero-title">What I bring<br>to the <em>table</em></h1>
   </div>
   <div class="divider"></div>
-
+  <div style="padding: 2rem 5rem 0;">
+  <div style="max-width: 760px; margin: 0 auto; border-radius: 8px; overflow: hidden; position: relative; z-index: 1001;">
+    <video controls preload="metadata" poster="video-poster.jpg"
+      style="width: 100%; display: block; outline: none; position: relative; z-index: 1001;">
+      <source src="Marketeyez_intro.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+  <div style="text-align: center; padding: 2rem 5rem 0;">
+    <a href="https://calendly.com/jmalobecki-marketeyez" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block; text-decoration:none;">Book a Discovery Call →</a>
+  </div>
   <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01</div>
@@ -2016,6 +2009,7 @@
         <li>Contact forms, Google Maps, social links &amp; more</li>
         <li>Ongoing updates and maintenance available</li>
         <li>No monthly platform fees — you own your site</li>
+        <li>Professional short-form video production — AI avatar delivery, custom tone &amp; style, background music, and branded visuals</li>
       </ul>
     </div>
   </div>
@@ -2177,43 +2171,48 @@
   <div class="divider"></div>
 
   <div class="blog-grid">
-    <div class="blog-featured">
-      <div class="blog-featured-image">✦</div>
-      <div class="blog-featured-content">
+  <div class="blog-featured">
+    <div class="blog-featured-image" style="padding:0; opacity:1;">
+      <canvas id="mcp-orbital" style="width:100%; height:100%; display:block;"></canvas>
+    </div>
+    <div class="blog-featured-content">
         <div class="blog-meta">
           <span class="blog-category">Agentic AI</span>
-          <span>January 2025</span>
+          <span>January 2026</span>
           <span>8 min read</span>
         </div>
-        <h3>Why Model Context Protocol Will Reshape the Sales Technology Stack in 2025</h3>
+        <h3>Why Model Context Protocol Will Reshape the Sales Technology Stack in 2026</h3>
         <p>MCP is not just a developer curiosity — it's the connective tissue that will make AI agents genuinely useful in enterprise revenue workflows. Here's what GTM leaders need to understand before their vendors explain it to them.</p>
+        <a href="blog/mcp-blog-post.html" class="blog-read-more">Read the post →</a>
       </div>
     </div>
-
     <div class="blog-sidebar">
       <div class="blog-card">
         <div class="blog-meta">
           <span class="blog-category">Pre-Sales</span>
-          <span>Nov 2024</span>
+          <span>Feb 2026</span>
         </div>
         <h4>MEDDIC Is Not a Checklist — It's a Diagnostic</h4>
         <p>The difference between reps who fill in the fields and consultants who actually diagnose the deal.</p>
+        <a href="blog/meddic-diagnostic.html" class="blog-read-more">Read the post →</a>
       </div>
       <div class="blog-card">
         <div class="blog-meta">
           <span class="blog-category">MarTech</span>
-          <span>Oct 2024</span>
+          <span>Mar 2026</span>
         </div>
         <h4>The RevOps Stack Is Bloated. Here's How to Fix It.</h4>
         <p>Most enterprise revenue teams are paying for redundancy. A structured rationalization approach that works.</p>
+        <a href="blog/revops-stack-bloated.html" class="blog-read-more">Read the post →</a>
       </div>
       <div class="blog-card">
         <div class="blog-meta">
           <span class="blog-category">Strategy</span>
-          <span>Sep 2024</span>
+          <span>Apr 2026</span>
         </div>
         <h4>What CFOs Actually Want to Hear in a Demo</h4>
         <p>Economic buyers don't care about features. Here's how to build a business case that lands at the top.</p>
+        <a href="blog/cfo-demo.html" class="blog-read-more">Read the post →</a>
       </div>
     </div>
   </div>
@@ -2222,26 +2221,29 @@
     <div class="blog-post-card">
       <div class="blog-meta">
         <span class="blog-category">Data &amp; AI</span>
-        <span>Aug 2024</span>
+        <span>May 2026</span>
       </div>
       <h4>RAG, Vector Stores, and What They Mean for B2B Data Platforms</h4>
       <p>A plain-language breakdown of retrieval-augmented generation for sales and solutions engineers who need to talk about it with customers.</p>
+      <a href="blog/rag-vector-stores.html" class="blog-read-more">Read the post →</a>
     </div>
     <div class="blog-post-card">
       <div class="blog-meta">
         <span class="blog-category">Pre-Sales</span>
-        <span>Jul 2024</span>
+        <span>Aug 2025</span>
       </div>
       <h4>The Anatomy of a Great Enterprise Demo</h4>
       <p>Discovery-led, persona-aware, and outcome-first. A framework for demos that actually move deals forward.</p>
+      <a href="blog/enterprise-demo-anatomy.html" class="blog-read-more">Read the post →</a>
     </div>
     <div class="blog-post-card">
       <div class="blog-meta">
         <span class="blog-category">GTM</span>
-        <span>Jun 2024</span>
+        <span>Nov 2025</span>
       </div>
       <h4>First-Party Data Is the New Competitive Moat</h4>
       <p>As third-party data depreciates, the companies that own clean first-party signals will win the next era of go-to-market.</p>
+      <a href="blog/first-party-data-moat.html" class="blog-read-more">Read the post →</a>
     </div>
   </div>
 
@@ -2286,7 +2288,7 @@
           <div class="contact-detail-icon">🌐</div>
           <div class="contact-detail-text">
             <strong>LinkedIn</strong>
-            <a href="https://www.linkedin.com/in/jakubmalobecki" target="_blank" rel="noopener noreferrer" style="color:var(--copper-light);text-decoration:none;">linkedin.com/in/jakubmalobecki</a>
+            linkedin.com/in/jakubmalobecki
           </div>
         </div>
         <div class="contact-detail">
@@ -2297,17 +2299,14 @@
           </div>
         </div>
       </div>
+    <div style="margin-top: 2rem;">
+        <a href="https://calendly.com/jmalobecki-marketeyez" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block; text-decoration:none; font-size:0.7rem;">
+          📅 &nbsp;Book a Call on Calendly →
+        </a>
+      </div>
     </div>
 
     <div class="contact-right">
-      <span class="contact-form-label">Book a Discovery Call</span>
-      <div class="copper-line"></div>
-      <a href="https://calendly.com/jmalobecki-marketeyez" target="_blank" rel="noopener noreferrer" class="calendly-btn">
-        Book a Meeting
-      </a>
-      <div class="contact-divider">
-        <span>or send a message below</span>
-      </div>
       <span class="contact-form-label">Send a message</span>
       <div class="copper-line"></div>
       <form id="contact-form" onsubmit="sendEmail(event)">
@@ -2327,15 +2326,9 @@
           <input type="email" id="cf-email" name="email" placeholder="your@email.com" required>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>Company</label>
-            <input type="text" id="cf-company" name="company" placeholder="Your company name">
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="cf-phone" name="phone" placeholder="Your phone number">
-          </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" id="cf-company" name="company" placeholder="Your company name">
         </div>
 
         <div class="form-group">
@@ -2415,7 +2408,6 @@
       lastname:  lastname,
       email:     document.getElementById('cf-email').value,
       company:   document.getElementById('cf-company').value || 'Not provided',
-      phone:     document.getElementById('cf-phone').value || 'Not provided',
       service:   document.getElementById('cf-service').value || 'Not specified',
       message:   document.getElementById('cf-message').value
     };
@@ -2668,6 +2660,10 @@
       page.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    if (name === 'blog' && !window._mcpOrbitalStarted) {
+      window._mcpOrbitalStarted = true;
+      setTimeout(function(){ initMCPOrbital(); }, 50);
+    }
 
     var navLink = document.getElementById('nav-' + name);
     if (navLink) navLink.classList.add('active');
@@ -2693,14 +2689,159 @@
   });
 
   // On load, check the URL and show the right page
-  document.addEventListener('DOMContentLoaded', function() {
-    var path = window.location.pathname.replace('/', '').replace(/\//g, '');
+  window.addEventListener('load', function() {
+    var hash = window.location.hash.replace('#', '');
+    var path = window.location.pathname.replace(/\//g, '');
     var validPages = ['home', 'about', 'services', 'cases', 'blog', 'contact'];
-    var page = validPages.indexOf(path) !== -1 ? path : 'home';
+    var page = validPages.indexOf(hash) !== -1 ? hash :
+               validPages.indexOf(path) !== -1 ? path : 'home';
     showPage(page, false);
     // Set initial history state
     window.history.replaceState({ page: page }, '', window.location.pathname);
   });
+  function initMCPOrbital() {
+    var canvas = document.getElementById('mcp-orbital');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var container = canvas.parentElement;
+    var W,H,cx,cy,dpr;
+    function resize(){
+      dpr=window.devicePixelRatio||1;
+      W=container.offsetWidth; H=container.offsetHeight;
+      canvas.width=W*dpr; canvas.height=H*dpr;
+      ctx.scale(dpr,dpr); cx=W/2; cy=H/2;
+    }
+    var COPPER='#b87333',COPPER_MID='#8a5520',COPPER_DIM='#3d2810',
+        COAL_MID='#242424',COAL_LIGHT='#221c14',
+        CREAM='#f0ede8',GOLD='#e8c97a',MCP_COLOR='#d4915a';
+    var nodes=[
+      {label:'SalesTech',sub:'CRM · Engagement · CPQ',      angle:-Math.PI/2},
+      {label:'MarTech',  sub:'Automation · Email · AdTech', angle:-Math.PI/2+(Math.PI*2/5)},
+      {label:'Service',  sub:'Support · AI Chat · Success', angle:-Math.PI/2+(Math.PI*4/5)},
+      {label:'Data',     sub:'Warehouse · ETL · CDP',       angle:-Math.PI/2+(Math.PI*6/5)},
+      {label:'Analytics',sub:'BI · Forecasting · Reporting',angle:-Math.PI/2+(Math.PI*8/5)},
+    ];
+    var SPEED=0.00022,offset=0,last=null;
+    var dotPhases=nodes.map(function(_,i){return i*(Math.PI*2/nodes.length);});
+    function drawGrid(){
+      ctx.save(); ctx.strokeStyle='#1e1e1e'; ctx.lineWidth=0.5;
+      var step=Math.min(W,H)/9;
+      for(var x=0;x<W;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+      for(var y=0;y<H;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+      ctx.restore();
+    }
+    function drawCorners(){
+      ctx.save(); ctx.strokeStyle=COPPER; ctx.lineWidth=1; ctx.globalAlpha=0.4;
+      [[24,24,1,1],[W-24,24,-1,1],[24,H-24,1,-1],[W-24,H-24,-1,-1]].forEach(function(p){
+        ctx.beginPath(); ctx.moveTo(p[0],p[1]); ctx.lineTo(p[0]+p[2]*10,p[1]);
+        ctx.moveTo(p[0],p[1]); ctx.lineTo(p[0],p[1]+p[3]*10); ctx.stroke();
+      }); ctx.restore();
+    }
+    function drawOrbitRing(r){
+      ctx.save(); ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+      ctx.strokeStyle=COPPER_DIM; ctx.lineWidth=0.75; ctx.globalAlpha=0.55;
+      ctx.setLineDash([5,14]); ctx.stroke(); ctx.setLineDash([]); ctx.restore();
+    }
+    function drawConnector(nx,ny,phase,ts){
+      ctx.save();
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(nx,ny);
+      ctx.strokeStyle=COPPER; ctx.lineWidth=3; ctx.globalAlpha=0.05; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(nx,ny);
+      ctx.strokeStyle=COPPER_MID; ctx.lineWidth=0.8; ctx.globalAlpha=0.75; ctx.stroke();
+      var t=(Math.sin(ts*0.0018+phase)*0.5+0.5);
+      var dx=cx+(nx-cx)*t, dy=cy+(ny-cy)*t;
+      ctx.beginPath(); ctx.arc(dx,dy,2.5,0,Math.PI*2);
+      ctx.fillStyle=GOLD; ctx.globalAlpha=0.7; ctx.fill();
+      ctx.restore();
+    }
+    function drawCenterNode(ts){
+      var pulseT=Math.sin(ts*0.0014)*0.5+0.5;
+      var cr=Math.min(W,H)*0.11;
+      [1,2,3].forEach(function(i){
+        var pr=cr*1.1+i*14+pulseT*7;
+        ctx.beginPath(); ctx.arc(cx,cy,pr,0,Math.PI*2);
+        ctx.strokeStyle=COPPER; ctx.globalAlpha=(0.09-i*0.025)*(1-pulseT*0.3);
+        ctx.lineWidth=1; ctx.stroke();
+      });
+      ctx.beginPath(); ctx.arc(cx,cy,cr,0,Math.PI*2);
+      ctx.fillStyle=COAL_MID; ctx.globalAlpha=1; ctx.fill();
+      ctx.strokeStyle=COPPER; ctx.lineWidth=1.5; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx,cy,cr*0.8,0,Math.PI*2);
+      ctx.strokeStyle=COPPER_MID; ctx.lineWidth=0.5; ctx.stroke();
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(offset*0.5);
+      ctx.beginPath(); ctx.arc(0,0,cr*0.62,0,Math.PI*2);
+      ctx.strokeStyle=COPPER_DIM; ctx.lineWidth=0.5;
+      ctx.setLineDash([2,9]); ctx.stroke(); ctx.setLineDash([]); ctx.restore();
+      ctx.save(); ctx.strokeStyle=COPPER; ctx.lineWidth=0.5; ctx.globalAlpha=0.35;
+      ctx.beginPath(); ctx.moveTo(cx-cr*0.45,cy); ctx.lineTo(cx+cr*0.45,cy); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx,cy-cr*0.45); ctx.lineTo(cx,cy+cr*0.45); ctx.stroke();
+      ctx.restore();
+      [0,Math.PI*.5,Math.PI,Math.PI*1.5].forEach(function(a){
+        var x1=cx+Math.cos(a)*(cr*0.96), y1=cy+Math.sin(a)*(cr*0.96);
+        var x2=cx+Math.cos(a)*(cr*1.1),  y2=cy+Math.sin(a)*(cr*1.1);
+        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+        ctx.strokeStyle=COPPER; ctx.lineWidth=1.5; ctx.globalAlpha=0.8; ctx.stroke();
+      });
+      ctx.beginPath(); ctx.arc(cx,cy+cr*0.08,cr*0.09,0,Math.PI*2);
+      ctx.fillStyle=COPPER; ctx.globalAlpha=1; ctx.fill();
+      ctx.globalAlpha=1;
+      ctx.fillStyle='#110a04';
+      ctx.font='800 '+Math.max(11,Math.floor(cr*0.32))+'px Barlow,sans-serif';
+      ctx.textAlign='center'; ctx.fillText('MCP',cx+0.75,cy-cr*0.18+0.75);
+      ctx.fillStyle=MCP_COLOR; ctx.fillText('MCP',cx,cy-cr*0.18);
+      ctx.globalAlpha=0.9; ctx.fillStyle=COPPER;
+      ctx.font='500 '+Math.max(8,Math.floor(cr*0.18))+'px Barlow,sans-serif';
+      ctx.fillText('Protocol Hub',cx,cy+cr*0.38);
+    }
+    function drawSatelliteNode(x,y,label,sub,scale){
+      var r=Math.max(24,30*scale);
+      var fs=Math.max(8,Math.floor(10*scale)), ss=Math.max(6,Math.floor(7*scale));
+      ctx.beginPath(); ctx.arc(x,y,r+10,0,Math.PI*2);
+      ctx.fillStyle='#1a1a1a'; ctx.globalAlpha=0.72; ctx.fill();
+      ctx.beginPath(); ctx.arc(x,y,r+5,0,Math.PI*2);
+      ctx.fillStyle=COPPER; ctx.globalAlpha=0.07; ctx.fill();
+      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle=COAL_LIGHT; ctx.globalAlpha=1; ctx.fill();
+      ctx.strokeStyle=COPPER; ctx.lineWidth=1.25; ctx.stroke();
+      ctx.beginPath(); ctx.arc(x,y,r-8,0,Math.PI*2);
+      ctx.strokeStyle=COPPER_MID; ctx.lineWidth=0.4;
+      ctx.setLineDash([2,5]); ctx.stroke(); ctx.setLineDash([]);
+      ctx.globalAlpha=1;
+      ctx.fillStyle='#110a04';
+      ctx.font='700 '+fs+'px Barlow,sans-serif';
+      ctx.textAlign='center'; ctx.fillText(label,x+0.5,y-6+0.5);
+      ctx.fillStyle=CREAM; ctx.fillText(label,x,y-6);
+      ctx.beginPath(); ctx.arc(x,y+2,3.5,0,Math.PI*2);
+      ctx.fillStyle=COPPER; ctx.globalAlpha=1; ctx.fill();
+      ctx.globalAlpha=0.85; ctx.fillStyle=COPPER;
+      ctx.font='500 '+ss+'px Barlow,sans-serif';
+      ctx.fillText(sub,x,y+14);
+      ctx.globalAlpha=1;
+    }
+    function frame(ts){
+      if(!last) last=ts;
+      var dt=ts-last; last=ts;
+      offset+=SPEED*dt;
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle='#1a1a1a'; ctx.fillRect(0,0,W,H);
+      drawGrid();
+      var minDim=Math.min(W,H), scale=minDim/480, orbitR=minDim*0.415;
+      drawOrbitRing(orbitR);
+      var positions=nodes.map(function(n,i){return{
+        x:cx+Math.cos(n.angle+offset)*orbitR,
+        y:cy+Math.sin(n.angle+offset)*orbitR,
+        label:n.label, sub:n.sub, phase:dotPhases[i]
+      };});
+      positions.forEach(function(n){drawConnector(n.x,n.y,n.phase,ts);});
+      positions.forEach(function(n){drawSatelliteNode(n.x,n.y,n.label,n.sub,scale);});
+      drawCenterNode(ts);
+      drawCorners();
+      requestAnimationFrame(frame);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    requestAnimationFrame(frame);
+  }
 </script>
 </body>
 </html>
