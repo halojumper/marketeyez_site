@@ -1660,14 +1660,19 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
-    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
-    <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
-    <li><a onclick="showPage('cases')" id="nav-cases">Case Studies</a></li>
-    <li><a onclick="showPage('blog')" id="nav-blog">Insights</a></li>
-    <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  <ul class="nav-links" id="nav-menu">
+    <li><a onclick="showPage('home');closeMobileMenu()" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('about');closeMobileMenu()" id="nav-about">About</a></li>
+    <li><a onclick="showPage('services');closeMobileMenu()" id="nav-services">Services</a></li>
+    <li><a onclick="showPage('cases');closeMobileMenu()" id="nav-cases">Case Studies</a></li>
+    <li><a onclick="showPage('blog');closeMobileMenu()" id="nav-blog">Insights</a></li>
+    <li><a onclick="showPage('contact');closeMobileMenu()" id="nav-contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- ═══════════════════════════════════════ HOME ═══════════════════════════════════════ -->
