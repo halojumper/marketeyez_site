@@ -2785,6 +2785,33 @@
     }, 100);
   }
 
+  // ─── HAMBURGER MENU ───
+  function toggleMobileMenu() {
+    var menu = document.getElementById('nav-menu');
+    var hamburger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  }
+
+  function closeMobileMenu() {
+    var menu = document.getElementById('nav-menu');
+    var hamburger = document.getElementById('hamburger');
+    menu.classList.remove('open');
+    hamburger.classList.remove('open');
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('nav-menu');
+    var hamburger = document.getElementById('hamburger');
+    if (menu && hamburger) {
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+        hamburger.classList.remove('open');
+      }
+    }
+  });
+
   // ─── PAGE NAVIGATION WITH HISTORY API ───
   function showPage(name, pushState) {
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
