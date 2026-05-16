@@ -2602,19 +2602,17 @@
       var numMatch = target.match(/[\d.]+/);
       if (!numMatch) return;
       var endVal = parseFloat(numMatch[0]);
-      var prefix = target.includes('$') ? '$' : '';
-      var suffix = target.replace(/[$\d.]/g, '');
-      var duration = 1800;
+      var prefix = target.startsWith('$') ? '$' : '';
+      var suffix = target.replace('$', '').replace(/[\d.]/g, '');
+      var duration = 2000;
       var startTime = null;
-
-      counter.textContent = prefix + '0' + suffix;
 
       function step(timestamp) {
         if (!startTime) startTime = timestamp;
         var progress = Math.min((timestamp - startTime) / duration, 1);
         var eased = 1 - Math.pow(1 - progress, 3);
-        var current = Math.floor(eased * endVal * 10) / 10;
-        counter.textContent = prefix + (Number.isInteger(endVal) ? Math.floor(current) : current) + suffix;
+        var current = Math.round(eased * endVal);
+        counter.textContent = prefix + current + suffix;
         if (progress < 1) {
           requestAnimationFrame(step);
         } else {
@@ -2624,14 +2622,22 @@
 
       var counterObserver = new IntersectionObserver(function(entries) {
         if (entries[0].isIntersecting) {
-          requestAnimationFrame(step);
+          counter.textContent = prefix + '0' + suffix;
+          startTime = null;
+          setTimeout(function() {
+            requestAnimationFrame(step);
+          }, 300);
           counterObserver.unobserve(counter);
         }
-      }, { threshold: 0.5 });
+      }, { threshold: 0.2 });
 
       counterObserver.observe(counter);
     });
   }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    animateCounters();
+  });
 
   // ─── TYPEWRITER EFFECT ───
   function initTypewriter() {
