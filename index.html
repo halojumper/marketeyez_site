@@ -2635,8 +2635,10 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    animateCounters();
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      animateCounters();
+    }, 500);
   });
 
   // ─── TYPEWRITER EFFECT ───
