@@ -2605,15 +2605,7 @@
     if (rect.top > window.innerHeight) return;
     countersAnimated = true;
 
-    var data = [
-      { selector: '.stat-num:nth-child(1)', end: 15, display: '15+' },
-      { selector: '.stat-item:nth-child(1) .stat-num', end: 15, display: '15+' },
-      { selector: '.stat-item:nth-child(2) .stat-num', end: 50, display: '$50M+' },
-      { selector: '.stat-item:nth-child(3) .stat-num', end: 6, display: '6' },
-      { selector: '.stat-item:nth-child(4) .stat-num', end: 2, display: '2' }
-    ];
-
-    var items = document.querySelectorAll('.stat-item .stat-num');
+    var items = document.querySelectorAll('#page-home .stat-item .stat-num');
     var targets = [
       { end: 15, prefix: '', suffix: '+' },
       { end: 50, prefix: '$', suffix: 'M+' },
