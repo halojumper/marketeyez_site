@@ -2595,17 +2595,28 @@
   }
 
   // ─── ANIMATED COUNTERS ───
-  function animateCounters() {
+  var countersAnimated = false;
+
+  function runCounters() {
+    if (countersAnimated) return;
+    var statsBar = document.querySelector('.stats-bar');
+    if (!statsBar) return;
+    var rect = statsBar.getBoundingClientRect();
+    if (rect.top > window.innerHeight) return;
+    countersAnimated = true;
+
     var counters = document.querySelectorAll('.stat-num');
     counters.forEach(function(counter) {
       var target = counter.textContent.trim();
-      var numMatch = target.match(/[\d.]+/);
+      var numMatch = target.match(/\d+/);
       if (!numMatch) return;
-      var endVal = parseFloat(numMatch[0]);
-      var prefix = target.startsWith('$') ? '$' : '';
-      var suffix = target.replace('$', '').replace(/[\d.]/g, '');
-      var duration = 2000;
+      var endVal = parseInt(numMatch[0]);
+      var prefix = target.includes('$') ? '$' : '';
+      var suffix = target.replace('$', '').replace(/\d/g, '');
+      var duration = 1500;
       var startTime = null;
+
+      counter.textContent = prefix + '0' + suffix;
 
       function step(timestamp) {
         if (!startTime) startTime = timestamp;
@@ -2619,28 +2630,15 @@
           counter.textContent = target;
         }
       }
-
-      var counterObserver = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) {
-          counter.textContent = prefix + '0' + suffix;
-          startTime = null;
-          setTimeout(function() {
-            requestAnimationFrame(step);
-          }, 300);
-          counterObserver.unobserve(counter);
-        }
-      }, { threshold: 0.2 });
-
-      counterObserver.observe(counter);
+      requestAnimationFrame(step);
     });
   }
 
   window.addEventListener('load', function() {
-    setTimeout(function() {
-      animateCounters();
-    }, 500);
+    setTimeout(runCounters, 800);
+    window.addEventListener('scroll', runCounters);
   });
-
+  
   // ─── TYPEWRITER EFFECT ───
   function initTypewriter() {
     var el = document.querySelector('.hero-name');
