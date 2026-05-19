@@ -2613,7 +2613,7 @@
       var endVal = parseInt(numMatch[0]);
       var prefix = target.includes('$') ? '$' : '';
       var suffix = target.replace('$', '').replace(/\d/g, '');
-      var duration = 1500;
+     var duration = Math.max(1500, endVal * 150);
       var startTime = null;
 
       counter.textContent = prefix + '0' + suffix;
