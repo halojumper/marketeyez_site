@@ -2604,7 +2604,7 @@
       var num = parseInt(final.replace(/\D/g, ''));
       var prefix = final.match(/^\$/) ? '$' : '';
       var suffix = final.replace(/[\$\d]/g, '');
-      var duration = 2000;
+      var duration = math.min(2000, endVal * 200);
       var start = performance.now();
       el.textContent = prefix + '0' + suffix;
 
