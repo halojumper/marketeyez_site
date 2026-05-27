@@ -3239,5 +3239,96 @@
     requestAnimationFrame(frame);
   }
 </script>
+  <!-- ─── ASK JAKUB CHAT WIDGET ─── -->
+<div id="ask-jakub-bubble" onclick="toggleAskJakub()" title="Ask Jakub">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.956 7.956 0 01-4.079-1.115l-.291-.174-3.018.897.897-3.018-.174-.291A7.956 7.956 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+  </svg>
+</div>
+
+<div id="ask-jakub-window">
+  <div class="aj-header">
+    <div class="aj-header-left">
+      <img src="headshot.png" alt="Jakub" class="aj-avatar">
+      <div>
+        <div class="aj-title">Ask Jakub</div>
+        <div class="aj-subtitle">AI Assistant · Marketeyez</div>
+      </div>
+    </div>
+    <button class="aj-close" onclick="toggleAskJakub()">✕</button>
+  </div>
+  <div class="aj-messages" id="aj-messages">
+    <div class="aj-msg assistant">Hi! I'm Jakub's AI assistant. Ask me anything about his background, services, or how Marketeyez can help you. 👋</div>
+  </div>
+  <div class="aj-input-area">
+    <input type="text" class="aj-input" id="aj-input" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendAskJakub()">
+    <button class="aj-send" id="aj-send" onclick="sendAskJakub()">→</button>
+  </div>
+</div>
+  </div>
+
+<script>
+  // ─── ASK JAKUB CHAT WIDGET ───
+  var ajMessages = [];
+  var ajOpen = false;
+
+  function toggleAskJakub() {
+    ajOpen = !ajOpen;
+    var window_ = document.getElementById('ask-jakub-window');
+    if (ajOpen) {
+      window_.classList.add('open');
+      document.getElementById('aj-input').focus();
+    } else {
+      window_.classList.remove('open');
+    }
+  }
+
+  function sendAskJakub() {
+    var input = document.getElementById('aj-input');
+    var msg = input.value.trim();
+    if (!msg) return;
+
+    var sendBtn = document.getElementById('aj-send');
+    input.value = '';
+    sendBtn.disabled = true;
+
+    appendAjMessage('user', msg);
+    ajMessages.push({ role: 'user', content: msg });
+    var typingEl = appendAjMessage('typing', 'Thinking...');
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: ajMessages })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      typingEl.remove();
+      if (data.error) {
+        appendAjMessage('assistant', 'Sorry, something went wrong. Please try emailing jmalobecki@marketeyez.com directly.');
+      } else {
+        appendAjMessage('assistant', data.content);
+        ajMessages.push({ role: 'assistant', content: data.content });
+      }
+      sendBtn.disabled = false;
+    })
+    .catch(function() {
+      typingEl.remove();
+      appendAjMessage('assistant', 'Sorry, something went wrong. Please try emailing jmalobecki@marketeyez.com directly.');
+      sendBtn.disabled = false;
+    });
+  }
+
+  function appendAjMessage(role, text) {
+    var container = document.getElementById('aj-messages');
+    var el = document.createElement('div');
+    el.className = 'aj-msg ' + role;
+    el.textContent = text;
+    container.appendChild(el);
+    container.scrollTop = container.scrollHeight;
+    return el;
+  }
+</script>
 </body>
 </html>
+
