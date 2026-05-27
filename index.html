@@ -1642,7 +1642,7 @@
 
   .aj-header {
     padding: 1rem 1.2rem;
-    background: var(--black);
+    background: #1e1a16;
     border-bottom: 1px solid var(--border-light);
     display: flex;
     align-items: center;
@@ -1672,7 +1672,7 @@
 
   .aj-subtitle {
     font-size: 0.6rem;
-    color: var(--text-muted);
+    color: #888;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -1699,6 +1699,7 @@
     gap: 0.8rem;
     min-height: 200px;
     max-height: 320px;
+    background: #f5efe8;
   }
 
   .aj-messages::-webkit-scrollbar { width: 4px; }
@@ -1722,16 +1723,16 @@
 
   .aj-msg.user {
     background: var(--copper);
-    color: var(--black);
+    color: #ffffff;
     align-self: flex-end;
     font-weight: 500;
   }
 
   .aj-msg.typing {
-    background: var(--black);
+    background: #ffffff;
     border-left: 2px solid var(--copper);
     align-self: flex-start;
-    color: var(--text-muted);
+    color: #888;
     font-style: italic;
   }
 
@@ -1741,14 +1742,15 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    background: #ffffff;
   }
 
   .aj-input {
     flex: 1;
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
+    border-bottom: 1px solid var(--copper);
+    color: #2a2015;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.78rem;
     padding: 0.5rem 0;
@@ -1784,6 +1786,7 @@
       bottom: 5rem;
     }
   }
+    
   /* ─── CONTACT FORM STATUS ─── */
   .cf-status {
     padding: 1rem 1.2rem;
