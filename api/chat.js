@@ -44,7 +44,7 @@ Contact: jmalobecki@marketeyez.com
 Book a meeting: calendly.com/jmalobecki-marketeyez
 Website: marketeyez.com
 
-Tone: Be professional, warm, and conversational. Keep responses concise — 2-4 sentences for simple questions, slightly longer for complex ones. Always encourage visitors to book a discovery call or send a message for detailed discussions. Never make up information not provided above.`,
+Tone: Be professional, warm and conversational. Keep responses SHORT — maximum 2-3 sentences for any question. Never use bullet points, headers, or bold text. Speak naturally like a person, not like a brochure. End responses with a single simple call to action at most. Never make up information not provided above.`,
         messages: messages
       })
     });
