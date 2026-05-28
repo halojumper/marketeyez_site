@@ -55,8 +55,30 @@ Tone: Be professional, warm and conversational. Keep responses SHORT — maximum
       return res.status(response.status).json({ error: data.error?.message || 'API error' });
     }
 
+    const assistantReply = data.content[0].text;
+
+    // ─── LOG TO GOOGLE SHEETS ───
+    const lastUserMessage = messages[messages.length - 1]?.content || '';
+    const fullConversation = messages
+      .map(m => `${m.role.toUpperCase()}: ${m.content}`)
+      .join('\n') + '\nASSISTANT: ' + assistantReply;
+
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbwnx-fs80etNGANhUM2XPvhQcW_ZuEjyztNRhk9hDu46C44B_SzTSw38Ku7mi6wH-5q/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: lastUserMessage,
+          response: assistantReply,
+          conversation: fullConversation
+        })
+      });
+    } catch (logError) {
+      console.error('Logging failed:', logError);
+    }
+
     return res.status(200).json({ 
-      content: data.content[0].text 
+      content: assistantReply
     });
 
   } catch (error) {
