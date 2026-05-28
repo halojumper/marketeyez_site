@@ -64,7 +64,7 @@ Tone: Be professional, warm and conversational. Keep responses SHORT — maximum
       .join('\n') + '\nASSISTANT: ' + assistantReply;
 
     try {
-     await fetch('https://script.google.com/macros/s/AKfycbwnx-fs80etNGANhUM2XPvhQcW_ZuEjyztNRhk9hDu46C44B_SzTSw38Ku7mi6wH-5q/exec', {
+     await fetch('https://script.google.com/macros/s/AKfycbzapEAZQs6Pv8TP9-97VpIhIJWQuRIyBAEAk0dOSgg8hEI7B4XvSo0fd-xa5RvJlf379Q/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
