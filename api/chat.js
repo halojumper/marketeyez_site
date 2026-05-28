@@ -64,14 +64,15 @@ Tone: Be professional, warm and conversational. Keep responses SHORT — maximum
       .join('\n') + '\nASSISTANT: ' + assistantReply;
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbwnx-fs80etNGANhUM2XPvhQcW_ZuEjyztNRhk9hDu46C44B_SzTSw38Ku7mi6wH-5q/exec', {
+     await fetch('https://script.google.com/macros/s/AKfycbwnx-fs80etNGANhUM2XPvhQcW_ZuEjyztNRhk9hDu46C44B_SzTSw38Ku7mi6wH-5q/exec', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
           question: lastUserMessage,
           response: assistantReply,
           conversation: fullConversation
-        })
+        }),
+        redirect: 'follow'
       });
     } catch (logError) {
       console.error('Logging failed:', logError);
