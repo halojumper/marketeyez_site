@@ -3345,7 +3345,43 @@
     container.scrollTop = container.scrollHeight;
     return el;
   }
+  // ─── COOKIE CONSENT ───
+  function showCookieBanner() {
+    var consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  function declineCookies() {
+    localStorage.setItem('cookieConsent', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  window.addEventListener('load', function() {
+    setTimeout(showCookieBanner, 1500);
+  });
 </script>
+  <!-- ─── COOKIE CONSENT ─── -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:1.5rem; left:1.5rem; z-index:9999; max-width:420px; background:#1c1c1c; border:1px solid #b87a4b; padding:1.2rem 1.5rem; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:flex-start; gap:12px;">
+    <span style="font-size:1.5rem; flex-shrink:0;">🍪</span>
+    <div>
+      <p style="font-size:0.75rem; color:#e8ddd0; line-height:1.7; margin:0 0 1rem;">
+        We use cookies to enhance your browsing experience and analyze site traffic. By continuing to use this site, you consent to our use of cookies in accordance with our privacy policy.
+      </p>
+      <div style="display:flex; gap:0.8rem;">
+        <button onclick="acceptCookies()" style="background:#b87a4b; color:#0d0d0d; border:none; padding:8px 20px; font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer;">Accept</button>
+        <button onclick="declineCookies()" style="background:transparent; color:#b87a4b; border:1px solid #b87a4b; padding:8px 20px; font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer;">Decline</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 
