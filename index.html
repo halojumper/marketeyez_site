@@ -1929,15 +1929,17 @@
     .process-steps { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 1.5rem; text-align: center; }
     .footer-links { 
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.8rem;
-      text-align: center;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 0.6rem;
       width: 100%;
     }
     .footer-links a { 
-      font-size: 0.65rem;
-      padding: 0.3rem 0;
+      font-size: 0.5rem;
+      padding: 0.2rem 0;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
     }
     .page-hero { padding: 3rem 2rem 2rem; }
     .cases-intro { padding: 2rem; }
